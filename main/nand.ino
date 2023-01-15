@@ -1,259 +1,275 @@
 void NAND() {
   lcd.clear();
-  lcd.setCursor(0, 0);
+  lcd.setCursor(00, 00);
   lcd.print("IC 7400 NAND!");
 
-
-  /*============= 0 0 ==============*/
+  ////////////////////////// 0 0
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
 
   //GATE1
   if (digitalRead(GATE1) == HIGH) {
-    
+    Serial.println("0 0 = 1, GATE 1 IS OK");
     a = a + 1 ;
-    
+    Serial.println(a);
+  } else {
+    Serial.println("GATE 1 NOT OK");
   }
+
+  delay(1000);
 
   //GATE2
   if (digitalRead(GATE2) == HIGH) {
-    
+    Serial.println("0 0 = 1, GATE 2 IS OK");
     b = b + 1 ;
-    
-  }
-  else {
+    Serial.println(b);
+  } else {
     Serial.println("GATE 2 NOT OK");
   }
 
   //GATE3
   if (digitalRead(GATE3) == HIGH) {
+    Serial.println("0 0 = 1, GATE 3 IS OK");
     c = c + 1 ;
-    
+    Serial.println(c);
+  } else {
+    Serial.println("GATE 3 NOT OK");
   }
+
   //GATE4
   if (digitalRead(GATE4) == HIGH) {
+    Serial.println("0 0 = 1, GATE 4 IS OK");
     d = d + 1 ;
-    
+    Serial.println(d);
+  } else {
+    Serial.println("GATE 1 NOT OK");
   }
+
+  Serial.println("\n");
   delay(1000);
 
-
-  /*============= 0 1 ==============*/
+  /////////////////////////////// 0 1
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
 
   //GATE1
   if (digitalRead(GATE1) == HIGH) {
+    Serial.println("0 1 = 1, GATE 1 IS OK");
     a = a + 1;
-    
+    Serial.println(a);
+  } else {
+    Serial.println("GATE 1 NOT OK");
   }
 
   //GATE2
   if (digitalRead(GATE2) == HIGH) {
-    b = b + 1 ; 
+    Serial.println("0 1 = 1, GATE 2 IS OK");
+    b = b + 1 ;
+    Serial.println(b);
+  } else {
+    Serial.println("GATE 2 NOT OK");
   }
-
 
   //GATE3
   if (digitalRead(GATE3) == HIGH) {
+    Serial.println("0 1 = 1, GATE 3 IS OK");
     c = c + 1 ;
-    
+    Serial.println(c);
+  } else {
+    Serial.println("GATE 3 NOT OK");
   }
 
   //GATE4
   if (digitalRead(GATE4) == HIGH) {
+    Serial.println("0 1 = 1, GATE 4 IS OK");
     d = d + 1 ;
-    
+    Serial.println(d);
+  } else {
+    Serial.println("GATE 1 NOT OK");
   }
 
+  Serial.println("\n");
   delay(1000);
 
-
-  /*============= 1 0 ==============*/
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  ////////////////////// 1 0
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
 
   //GATE1
   if (digitalRead(GATE1) == HIGH) {
+    Serial.println("1 0 = 1, GATE 1 IS OK");
     a = a + 1 ;
-    
+    Serial.println(a);
+  } else {
+    Serial.println("GATE 1 NOT OK");
   }
 
   //GATE2
   if (digitalRead(GATE2) == HIGH) {
+    Serial.println("1 0 = 1, GATE 2 IS OK");
     b = b + 1 ;
-    
+    Serial.println(b);
+  } else {
+    Serial.println("GATE 2 NOT OK");
   }
 
   //GATE3
   if (digitalRead(GATE3) == HIGH) {
+    Serial.println("1 0 = 1, GATE 3 IS OK");
     c = c + 1 ;
-    
+    Serial.println(c);
+  } else {
+    Serial.println("GATE 3 NOT OK");
   }
 
   //GATE4
   if (digitalRead(GATE4) == HIGH) {
+    Serial.println("1 0 = 1, GATE 4 IS OK");
     d = d + 1 ;
-    
+    Serial.println(d);
+  } else {
+    Serial.println("GATE 1 NOT OK");
   }
 
+  Serial.println("\n");
   delay(1000);
 
-
-  /*============= 1 1 ==============*/
+  //////////////////////////// 1 1
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, HIGH);
 
   //GATE1
   if (digitalRead(GATE1) == LOW) {
+    Serial.println("1 1 = 0, GATE 1 IS OK");
     a = a + 1;
-    
+    Serial.println(a);
+  } else {
+    Serial.println("GATE 1 NOT OK");
   }
 
   //GATE2
   if (digitalRead(GATE2) == LOW) {
+    Serial.println("1 1 = 0, GATE 2 IS OK");
     b = b + 1 ;
-    
+    Serial.println(b);
+  } else {
+    Serial.println("GATE 2 NOT OK");
   }
-
 
   //GATE3
   if (digitalRead(GATE3) == LOW) {
+    Serial.println("1 1 = 0, GATE 3 IS OK");
     c = c + 1 ;
-    
+    Serial.println(b);
+  } else {
+    Serial.println("GATE 3 NOT OK");
   }
 
   //GATE4
   if (digitalRead(GATE4) == LOW) {
+    Serial.println("1 1 = 0, GATE 4 IS OK");
     d = d + 1 ;
-    
+    Serial.println(b);
+  } else {
+    Serial.println("GATE 4 NOT OK");
+  }
+
+  Serial.println("\n");
+  delay(1000);
+
+  /////////////////////////////////////////////////////////
+  if (a == 4) {
+    Serial.println("GATE 1 PERFECT");
+    lcd.setCursor(00, 1);
+    lcd.print("GATE 1 GOOD");
+  } else {
+    Serial.println("GATE 1 BAD");
+
+    lcd.clear();
+    lcd.setCursor(00, 00);
+    lcd.print("IC 7400 NAND!");
+    lcd.setCursor(00, 1);
+    lcd.print("GATE 1 BAD");
   }
 
   delay(1000);
 
-
-  /*========  KONDISI GATE =========*/
-  if (a == 4) {
-    lcd.setCursor(0, 1);
-    lcd.print("GATE 1 GOOD");
-  }
-  else {
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("IC 7400 NAND!");
-    lcd.setCursor(0, 1);
-    lcd.print("GATE 1 BAD");
-  }
-  delay(2000);
-
   if (b == 4) {
-    lcd.setCursor(0, 1);
+    Serial.println("GATE 2 PERFECT");
+    lcd.setCursor(00, 1);
     lcd.print("GATE 2 GOOD");
-  }
-  else {
+  } else {
+    Serial.println("GATE 2 BAD");
+
     lcd.clear();
-    lcd.setCursor(0, 0);
+    lcd.setCursor(00, 00);
     lcd.print("IC 7400 NAND!");
-    lcd.setCursor(0, 1);
+    lcd.setCursor(00, 1);
     lcd.print("GATE 2 BAD");
   }
-  delay(2000);
+
+  delay(1000);
 
   if (c == 4) {
-    lcd.setCursor(0, 1);
+    Serial.println("GATE 3 PERFECT");
+    lcd.setCursor(00, 1);
     lcd.print("GATE 3 GOOD");
-  }
-  else {
+  } else {
+    Serial.println("GATE 3 BAD");
+
     lcd.clear();
-    lcd.setCursor(0, 0);
+    lcd.setCursor(00, 00);
     lcd.print("IC 7400 NAND!");
-    lcd.setCursor(0, 1);
+    lcd.setCursor(00, 1);
     lcd.print("GATE 3 BAD");
   }
-  delay(2000);
+
+  delay(1000);
+  //lcd.clear();
 
   if (d == 4) {
-    lcd.setCursor(0, 1);
+    Serial.println("GATE 4 PERFECT");
+    lcd.setCursor(00, 1);
     lcd.print("GATE 4 GOOD");
-  }
-  else {
+  } else {
+    Serial.println("GATE 4 BAD");
+
     lcd.clear();
-    lcd.setCursor(0, 0);
+    lcd.setCursor(00, 00);
     lcd.print("IC 7400 NAND!");
-    lcd.setCursor(0, 1);
+    lcd.setCursor(00, 1);
     lcd.print("GATE 4 BAD");
   }
-  delay(2000);
+
+  delay(1000);
   lcd.clear();
 
   if (a == 4 && b == 4 && c == 4 && d == 4 ) {
-    lcd.setCursor(0, 0);
+    lcd.setCursor(00, 00);
     lcd.print("IC 7400 NAND!");
-    lcd.setCursor(0, 1);
+
+    lcd.setCursor(00, 1);
     lcd.print("IC GOOD");
 
-
-    digitalWrite(LED_HIJAU, HIGH);
-    digitalWrite(BUZZER, HIGH);
-    delay(200);
-    digitalWrite(BUZZER, LOW);
-    delay(200);
-    digitalWrite(BUZZER, HIGH);
-    delay(200);
-    digitalWrite(BUZZER, LOW);
-    delay(200);
-    digitalWrite(BUZZER, HIGH);
-    delay(200);
-    digitalWrite(BUZZER, LOW);
-    delay(200);
-    digitalWrite(BUZZER, HIGH);
-    delay(200);
-    digitalWrite(BUZZER, LOW);
-    delay(200);
-
-    /*======== EEPROM COUNTER ========*/
-    cnt_nand = cnt_nand + 1;
-    data_3 = cnt_nand;
-    EEPROM.write(address_3, data_3);
-  }
-  else {
-    digitalWrite(LED_MERAH, HIGH);
-    digitalWrite(BUZZER, HIGH);
-    delay(2000);
-    digitalWrite(BUZZER, LOW);
-
-    lcd.setCursor(0, 0);
+    Serial.println("IC PERFECT");
+    digitalWrite(BUZZ_1, HIGH);
+  } else {
+    Serial.println("IC BAD");
+    digitalWrite(LED_1, HIGH);
+    lcd.setCursor(00, 00);
     lcd.print("IC 7400 NAND!");
-    lcd.setCursor(0, 1);
+
+    lcd.setCursor(00, 1);
     lcd.print("IC BAD");
   }
 
-  /*============ COUNTER ===========*/
-  if (cnt_nand == 10 ) {
-    lcd.clear();
-    lcd.print("IC 7400 NAND!");
-    lcd.setCursor(0, 1);
-    lcd.print("IC PASSED");
-  }
-
-  delay(2000);
-  lcd.clear();
-
-  /*============ EEPROM ============*/
-  val_3 = EEPROM.read(address_3);
-  lcd.setCursor(0, 0);
-  lcd.print("TEST 7400 PASSED");
-  lcd.setCursor(0, 1);
-  lcd.print("IC TEST");
-  lcd.print(val_3);
-
+  delay(3000);
   a = 0;
   b = 0;
   c = 0;
   d = 0;
-
   lcd.clear();
-  digitalWrite(BUZZER, LOW);
-  digitalWrite(LED_MERAH, LOW);
-  digitalWrite(LED_HIJAU, LOW);
+  digitalWrite(BUZZ_1, LOW);
+  digitalWrite(LED_1, LOW);
+  Serial.println("\n");
 }
